@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ICE-9 Student Performance Visualization</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f7fb;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 16px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    nav {
+      background: #0f172a;
+      padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 14px;
+      font-weight: bold;
+      padding: 8px 14px;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    nav a:hover {
+      background: #2563eb;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 25px auto;
+    }
+
+    .home-box,
+    .section-box {
+      background: white;
+      padding: 25px;
+      margin-bottom: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+
+    .section-title {
+      color: #1e3a8a;
+      margin-bottom: 15px;
+      font-size: 28px;
+      border-bottom: 3px solid #dbeafe;
+      padding-bottom: 8px;
+    }
+
+    .sub-title {
+      color: #2563eb;
+      margin: 18px 0 10px;
+      font-size: 20px;
+    }
+
+    p {
+      margin-bottom: 12px;
+      text-align: justify;
+    }
+
+    ul {
+      margin: 10px 0 15px 25px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .img-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 15px;
+    }
+
+    .chart-card {
+      background: #f8fafc;
+      border: 1px solid #dbeafe;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .chart-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      margin-bottom: 10px;
+    }
+
+    .chart-card h4 {
+      color: #1d4ed8;
+      margin-bottom: 8px;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 15px;
+      text-decoration: none;
+      background: #2563eb;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .back-btn:hover {
+      background: #1e40af;
+    }
+
+    footer {
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 18px;
+      margin-top: 30px;
+    }
+
+    .highlight {
+      background: #eff6ff;
+      border-left: 5px solid #2563eb;
+      padding: 14px;
+      margin: 15px 0;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <header id="home">
+    <h1>Student Performance Visualization Website</h1>
+    <p>
+      This website presents the results of ICE-9 using the Student Performance Factors dataset.
+      It includes visualizations created with Python and explanations showing how color, size,
+      grouped comparisons, area trends, and line relationships help in understanding student performance.
+    </p>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#page1">Color & Size</a>
+    <a href="#page2">Bar & Area Charts</a>
+    <a href="#page3">Line Charts</a>
+  </nav>
+
+  <div class="container">
+
+    <section class="home-box">
+      <h2 class="section-title">Homepage</h2>
+      <p>
+        The dataset used for this lab contains information about several academic and personal factors
+        that influence student performance. It includes attributes such as hours studied, attendance,
+        previous scores, family income, motivation level, and exam score. Since the dataset contains
+        both quantitative and categorical columns, it is suitable for multiple visualization methods.
+      </p>
+      <p>
+        In this website, the visualizations are organized into separate sections for better readability.
+        The first section explains how color and size were used along with x-y encoding. The second section
+        presents grouped bar charts, stacked bar charts, and a stacked area chart. The third section focuses
+        on line charts used to study trends and comparisons.
+      </p>
+      <div class="highlight">
+        <strong>Navigation:</strong> Use the menu above to move between the sections. Each section also contains
+        a button to return to the homepage.
+      </div>
+    </section>
+
+    <section id="page1" class="section-box">
+      <h2 class="section-title">Page 1: Encoding Data using Color and Size</h2>
+
+      <h3 class="sub-title">Dataset Overview</h3>
+      <p>
+        A sample of the dataset was displayed in Python to understand the structure of the data.
+        The dataset contains several columns describing student behavior, background, and academic performance.
+        Numerical columns such as hours studied, attendance, previous scores, and exam score were useful for
+        building visual comparisons. Categorical columns such as gender, family income, and motivation level
+        helped in comparing student groups.
+      </p>
+
+      <h3 class="sub-title">Scatter Plot with Color and Size</h3>
+      <p>
+        A scatter plot was created using hours studied on the x-axis and exam score on the y-axis.
+        To improve the information shown in a single graph, color was used to represent attendance and
+        size was used to represent previous scores. This allowed multiple attributes to be visualized together
+        without creating separate charts.
+      </p>
+      <p>
+        The graph made it easier to observe that students who study more often tend to score higher, and
+        students with better attendance and stronger previous scores also appear in stronger performance regions.
+      </p>
+
+      <h3 class="sub-title">Optimized Graph</h3>
+      <p>
+        The graph was improved by reducing point overlap using transparency, adjusting marker sizes for better
+        visual balance, and selecting a more readable color palette. Additional formatting such as axis labels,
+        title design, and grid lines made the chart easier to understand. These changes improved clarity and
+        reduced confusion when multiple points were close to each other.
+      </p>
+
+      <div class="img-grid">
+        <div class="chart-card">
+          <img src="dataset_sample.png" alt="Dataset Sample Screenshot">
+          <h4>Dataset Sample</h4>
+          <p>Screenshot of part of the dataset shown in Python.</p>
+        </div>
+        <div class="chart-card">
+          <img src="scatter_color_size.png" alt="Scatter Plot Screenshot">
+          <h4>Color and Size Encoding</h4>
+          <p>Scatter plot using x-y channels with color and size encoding.</p>
+        </div>
+        <div class="chart-card">
+          <img src="optimized_scatter.png" alt="Optimized Scatter Plot Screenshot">
+          <h4>Optimized Scatter Plot</h4>
+          <p>Improved version with better readability and reduced overplotting.</p>
+        </div>
+      </div>
+
+      <a class="back-btn" href="#home">Back to Home</a>
+    </section>
+
+    <section id="page2" class="section-box">
+      <h2 class="section-title">Page 2: Stacked & Grouped Bar Chart and Stacked Area Chart</h2>
+
+      <h3 class="sub-title">Grouped Bar Chart</h3>
+      <p>
+        The grouped bar chart was used to compare average exam scores across different categories of family income
+        and motivation level. This chart made it possible to compare multiple groups side by side and identify
+        which combinations produced better academic outcomes.
+      </p>
+      <p>
+        The visualization showed that students with higher motivation generally performed better. It also suggested
+        that family income may have some influence, but motivation appeared to have a stronger and more direct
+        connection with exam performance.
+      </p>
+
+      <h3 class="sub-title">Stacked Bar Chart</h3>
+      <p>
+        The stacked bar chart showed the number of students in each family income category, divided by motivation level.
+        This chart was useful for understanding the composition of each category and observing how students were distributed
+        across motivation groups.
+      </p>
+
+      <h3 class="sub-title">Stacked Area Chart</h3>
+      <p>
+        A stacked area chart was created using grouped study-hour ranges. The chart showed how average exam scores changed
+        across study-hour intervals, while also showing the contribution of family income groups. This chart was useful
+        for viewing cumulative trends and how multiple groups changed across a continuous variable.
+      </p>
+      <p>
+        The trend suggested that exam scores generally increase with study hours. The differences between family income
+        groups were visible, but the overall upward movement indicated that study effort plays a major role in student success.
+      </p>
+
+      <div class="img-grid">
+        <div class="chart-card">
+          <img src="grouped_bar_chart.png" alt="Grouped Bar Chart">
+          <h4>Grouped Bar Chart</h4>
+          <p>Comparison of average exam score across student groups.</p>
+        </div>
+        <div class="chart-card">
+          <img src="stacked_bar_chart.png" alt="Stacked Bar Chart">
+          <h4>Stacked Bar Chart</h4>
+          <p>Distribution of students by category shown in stacked form.</p>
+        </div>
+        <div class="chart-card">
+          <img src="stacked_area_chart.png" alt="Stacked Area Chart">
+          <h4>Stacked Area Chart</h4>
+          <p>Trend of average exam score across study-hour groups.</p>
+        </div>
+      </div>
+
+      <a class="back-btn" href="#home">Back to Home</a>
+    </section>
+
+    <section id="page3" class="section-box">
+      <h2 class="section-title">Page 3: Line Chart with Multiple Lines</h2>
+
+      <h3 class="sub-title">Single Line Chart</h3>
+      <p>
+        The first line chart showed how average exam score changed across attendance ranges. This visualization clearly
+        indicated a positive trend. Students with better attendance usually achieved higher exam scores. The line chart
+        was helpful because it showed progression in a simple and easy-to-read form.
+      </p>
+
+      <h3 class="sub-title">Comparative Multi-Line Chart</h3>
+      <p>
+        The second line chart was designed for comparison. It displayed performance trends for different student groups
+        across study-hour ranges. Each line represented one category, making it possible to compare whether all groups
+        followed the same pattern or whether some groups improved more than others.
+      </p>
+      <p>
+        The chart showed that all groups generally improved as study hours increased. Although there were small differences
+        between the lines, the overall pattern remained similar, suggesting that study effort benefits students across groups.
+      </p>
+
+      <h3 class="sub-title">Overall Interpretation</h3>
+      <p>
+        Both line charts confirmed that attendance and study hours are strongly associated with better performance.
+        These visualizations were especially useful because they showed gradual changes and made it easy to compare trends.
+        Compared with individual values in a table, the line charts offered a clearer understanding of how academic outcomes
+        improve with consistent effort and participation.
+      </p>
+
+      <div class="img-grid">
+        <div class="chart-card">
+          <img src="line_chart_1.png" alt="Single Line Chart">
+          <h4>Line Chart</h4>
+          <p>Average exam score trend across attendance ranges.</p>
+        </div>
+        <div class="chart-card">
+          <img src="line_chart_2.png" alt="Comparative Line Chart">
+          <h4>Comparative Line Chart</h4>
+          <p>Performance comparison between groups across study-hour ranges.</p>
+        </div>
+      </div>
+
+      <a class="back-btn" href="#home">Back to Home</a>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>CSCE 5320 Scientific Data Visualization | ICE-9 | Student Performance Factors Website</p>
+  </footer>
+
+</body>
+</html>
